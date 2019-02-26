@@ -40,22 +40,41 @@ extension Book: Decodable {
         case price = "amount"
     }
 
-    init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws { //throws evita que todo lo que pongas con try lo tengas que poner dentro de un do-catch. THROWS ya especifica que va a recoger errores
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         bookId = try container.decode(String.self, forKey: .bookId)
 
-        let volumeInfo = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .volumeInfo)
-        title = try volumeInfo.decode(String.self, forKey: .title)
+        let volumeInfoContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .volumeInfo)
+        title = try volumeInfoContainer.decode(String.self, forKey: .title)
 
-        // TODO: completar en casa o mañana
-        authors = nil
-        publishedDate = nil
-        description = nil
-        coverURL = nil
-        rating = nil
-        numberOfReviews = nil
-        price = nil
+        // decodeIfPresent es porque es opcional
+        authors = try volumeInfoContainer.decodeIfPresent([String].self, forKey: .authors)
+        
+        // Formatear la fecha desde el String con la extension que hemos creado
+        if let publishedDateString = try volumeInfoContainer.decodeIfPresent(String.self, forKey: .publishedDate) {
+            publishedDate = DateFormatter.booksAPIDateFormatter.date(from: publishedDateString)
+        } else {
+            publishedDate = nil
+        }
+        
+        description = try volumeInfoContainer.decodeIfPresent(String.self, forKey: .description)
+        
+        // Convertir un String en URL
+        //do {
+            // si ponemos el try? indicamos que es opcional y no hace falta el do-catch
+            let imageLinkContainer = try? volumeInfoContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .imageLinks)
+            coverURL = try imageLinkContainer?.decodeIfPresent(URL.self, forKey: .coverURL)
+//        } catch {
+//            coverURL = nil
+//        }
+        
+        rating = try volumeInfoContainer.decodeIfPresent(Float.self, forKey: .rating)
+        numberOfReviews = try volumeInfoContainer.decodeIfPresent(Int.self, forKey: .numberOfReviews)
+        
+        let saleInfoContainer = try? container.nestedContainer(keyedBy: CodingKeys.self, forKey: .saleInfo)
+        let listPriceContainer = try? saleInfoContainer?.nestedContainer(keyedBy: CodingKeys.self, forKey: .listPrice)
+        price = try listPriceContainer??.decodeIfPresent(Float.self, forKey: .price)
     }
 
 }

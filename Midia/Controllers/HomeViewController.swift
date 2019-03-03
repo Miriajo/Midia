@@ -10,14 +10,16 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var homeCollectionView: UICollectionView!
+    let mediaItemCellIdentifier = "mediaItemCell"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        homeCollectionView.delegate = self
-        homeCollectionView.dataSource = self
-    }
+    @IBOutlet weak var homeCollectionView: UICollectionView!
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        homeCollectionView.delegate = self
+//        homeCollectionView.dataSource = self
+//    }
     
 }
 
@@ -32,7 +34,14 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell() // TODO
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mediaItemCellIdentifier, for: indexPath) as? MediaItemCollectionViewCell else {
+            fatalError()
+        }
+        
+        cell.titleLabel.text = "Hola mundo"
+        
+        return cell
+        
     }
     
 }

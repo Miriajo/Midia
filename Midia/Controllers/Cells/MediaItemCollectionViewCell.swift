@@ -10,10 +10,18 @@ import UIKit
 
 class MediaItemCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
     
-    
+    // Tengo una propiedad que es mi modelo
+    var mediaItem: MediaItemProvidable! {
+        didSet {
+            // hacer lo que quiera cuando cambie el atributo
+            // con willSet hago lo que quiera ANTES de que cambie el valor del atributo
+            titleLabel.text = mediaItem.title
+            // TODO: poner imagen
+        }
+    }
     
 }
 

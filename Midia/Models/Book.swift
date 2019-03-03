@@ -20,6 +20,18 @@ struct Book {
     let numberOfReviews: Int?
     let price: Float?
 
+    init(bookId: String, title: String, authors: [String]? = nil, publishedDate: Date? = nil, description: String? = nil, coverURL: URL? = nil, rating: Float? = nil, numberOfReviews: Int? = nil, price: Float? = nil) {
+        self.bookId = bookId
+        self.title = title
+        self.authors = authors
+        self.publishedDate = publishedDate
+        self.description = description
+        self.coverURL = coverURL
+        self.rating = rating
+        self.numberOfReviews = numberOfReviews
+        self.price = price
+    }
+    
 }
 
 extension Book: Decodable {
@@ -77,4 +89,10 @@ extension Book: Decodable {
         price = try listPriceContainer??.decodeIfPresent(Float.self, forKey: .price)
     }
 
+}
+
+extension Book: MediaItemProvidable {
+    var imageURL: URL? {
+        return coverURL
+    }
 }

@@ -12,15 +12,10 @@ class HomeViewController: UIViewController {
     
     let mediaItemCellIdentifier = "mediaItemCell"
     
-    @IBOutlet weak var homeCollectionView: UICollectionView!
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        homeCollectionView.delegate = self
-//        homeCollectionView.dataSource = self
-//    }
+    var mediaItems: [MediaItemProvidable]! = [] // aquí nunca poner nada de Book, ni Movies ni nada, esto debe completarse fuera de aquí
     
+    @IBOutlet weak var homeCollectionView: UICollectionView!
+
 }
 
 extension HomeViewController: UICollectionViewDelegate {
@@ -30,15 +25,18 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1 // TODO
+        return mediaItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mediaItemCellIdentifier, for: indexPath) as? MediaItemCollectionViewCell else {
             fatalError()
         }
+  
+        let mediaItem = mediaItems[indexPath.item]
         
-        cell.titleLabel.text = "Hola mundo"
+//        cell.titleLabel.text = mediaItem.title
+        cell.mediaItem = mediaItem
         
         return cell
         

@@ -12,9 +12,17 @@ class HomeViewController: UIViewController {
     
     let mediaItemCellIdentifier = "mediaItemCell"
     
-    var mediaItems: [MediaItemProvidable]! = [] // aquí nunca poner nada de Book, ni Movies ni nada, esto debe completarse fuera de aquí
+    var mediaItemProvider: MediaItemProvider! 
+    
+    private var mediaItems: [MediaItemProvidable]! = [] // aquí nunca poner nada de Book, ni Movies ni nada, esto debe completarse fuera de aquí
     
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        mediaItems = mediaItemProvider.getHomeMediaItems()
+    }
 
 }
 

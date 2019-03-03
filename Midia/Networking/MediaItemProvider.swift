@@ -12,15 +12,15 @@ import Foundation
 
 class MediaItemProvider {
     
-    let mediaItemKind: MediaItemKind
-    let apiConsumer: MediaItemAPIConsumable
+    let mediaItemKind: MediaItemKind   // tipo
+    let apiConsumer: MediaItemAPIConsumable  // servicio (protocolo) - Tendrá un consumer de la API que seam GoogleBooks, Games, iTunesMovies
     
-    init(withMediaItemKind mediaItemKind: MediaItemKind, apiConsumer: MediaItemAPIConsumable) {
+    private init(withMediaItemKind mediaItemKind: MediaItemKind, apiConsumer: MediaItemAPIConsumable) {
         self.mediaItemKind = mediaItemKind
         self.apiConsumer = apiConsumer
     }
     
-    convenience init(withMediaItemKind mediaItemKind: MediaItemKind) {
+    convenience init(withMediaItemKind mediaItemKind: MediaItemKind) { // aquí definimos cuál es el servicio de cada tipo
       // self.mediaItemKind = mediaItemKind
         switch mediaItemKind {
         case .book:
@@ -35,8 +35,10 @@ class MediaItemProvider {
         }
     }
 
-    func getLatestMediaItems() -> [MediaItemProvidable] {
-        return apiConsumer.getLatestMediaItems()
+    func getHomeMediaItems() -> [MediaItemProvidable] {
+        // guardar cosas en caché
+        // comprobar que estamos en el hilo principal
+        return apiConsumer.getLatestMediaItems()  // esta es la función de MockMedia
     }
 }
 

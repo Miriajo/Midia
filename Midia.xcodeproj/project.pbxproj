@@ -193,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				4AB41056222C87B00001420F /* MediaItemProvidable.swift */,
+				4AB41063222C8FBF0001420F /* MediaItemAPIConsumable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -201,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				4AB4105D222C8E3F0001420F /* MediaItemProvider.swift */,
-				4AB41063222C8FBF0001420F /* MediaItemAPIConsumable.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";

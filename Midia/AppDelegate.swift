@@ -18,8 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("Wrong initial setup")
         }
         
-        homeViewController.mediaItems = [Book(bookId: "1", title: "Primer book"), Book(bookId: "2", title: "Second book"), Game(), Game(), Game(), Game(), Game(), Game(), Game(), Game()]
-        
+        // Tener un servicio que le diga el tipo de mediaItem que quiera mostrar y le diga a mi homeScreen - oye, muestra los últimos estrenos
+        // let mediaProvider = MediaItemProvider(withMediaItemKind: .book)
+        // homeViewController.mediaItems = mediaProvider.getHomeMediaItems()
+        homeViewController.mediaItemProvider = MediaItemProvider(withMediaItemKind: .book)
         return true
     }
 

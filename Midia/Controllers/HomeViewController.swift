@@ -25,14 +25,15 @@ class HomeViewController: UIViewController {
         
         activityIndicatorView.isHidden = false
         
+        
         mediaItemProvider.getHomeMediaItems(onSuccess: { [weak self] (mediaItems) in
             self?.mediaItems = mediaItems
             self?.homeCollectionView.reloadData()
             self?.activityIndicatorView.isHidden = true
-            }, failure: { [weak self] (error) in
-                self?.activityIndicatorView.isHidden = true
-                self?.failureEmojiLabel.isHidden = false
-        })
+        }) { [weak self] (error) in
+            self?.activityIndicatorView.isHidden = true
+            self?.failureEmojiLabel.isHidden = false
+        }
     }
 
 }

@@ -17,11 +17,22 @@ class HomeViewController: UIViewController {
     private var mediaItems: [MediaItemProvidable]! = [] // aquí nunca poner nada de Book, ni Movies ni nada, esto debe completarse fuera de aquí
     
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var failureEmojiLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mediaItems = mediaItemProvider.getHomeMediaItems()
+        activityIndicatorView.isHidden = false
+        
+        mediaItemProvider.getHomeMediaItems(onSuccess: { [weak self] (mediaItems) in
+            self?.mediaItems = mediaItems
+            self?.homeCollectionView.reloadData()
+            self?.activityIndicatorView.isHidden = true
+            }, failure: { [weak self] (error) in
+                self?.activityIndicatorView.isHidden = true
+                self?.failureEmojiLabel.isHidden = false
+        })
     }
 
 }

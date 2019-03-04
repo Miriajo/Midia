@@ -68,18 +68,34 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HIa-X0-8X2"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5Ad-eB-TPq">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😖" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cp-wx-rVh">
+                                <rect key="frame" x="165" y="309.5" width="45" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="upx-dD-3EX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Fi-bu-GX0"/>
                             <constraint firstItem="upx-dD-3EX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1tm-eN-BOL"/>
+                            <constraint firstItem="2cp-wx-rVh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jg3-sv-jpH"/>
                             <constraint firstItem="upx-dD-3EX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gbI-GC-Qkc"/>
+                            <constraint firstItem="5Ad-eB-TPq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kbh-2G-LLz"/>
+                            <constraint firstItem="5Ad-eB-TPq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mTG-7D-jrD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="upx-dD-3EX" secondAttribute="bottom" id="rns-Pj-aaA"/>
+                            <constraint firstItem="2cp-wx-rVh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uMi-pC-8h1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="HomeCollectionView" destination="upx-dD-3EX" id="DJY-hF-Hob"/>
+                        <outlet property="activityIndicatorView" destination="5Ad-eB-TPq" id="JHd-jW-yUW"/>
+                        <outlet property="failureEmojiLabel" destination="2cp-wx-rVh" id="PQv-5a-b63"/>
                         <outlet property="homeCollectionView" destination="upx-dD-3EX" id="sLW-h5-E4f"/>
                     </connections>
                 </viewController>

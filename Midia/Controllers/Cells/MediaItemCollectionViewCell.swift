@@ -12,7 +12,7 @@ class MediaItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
-    
+     
     // Tengo una propiedad que es mi modelo
     var mediaItem: MediaItemProvidable! {
         didSet {

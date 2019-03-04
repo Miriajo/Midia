@@ -78,17 +78,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAj-sB-kOX">
+                                <rect key="frame" x="15" y="367.5" width="345" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="upx-dD-3EX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Fi-bu-GX0"/>
                             <constraint firstItem="upx-dD-3EX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1tm-eN-BOL"/>
+                            <constraint firstItem="fAj-sB-kOX" firstAttribute="top" secondItem="2cp-wx-rVh" secondAttribute="bottom" constant="10" id="6Qv-Y7-L7g"/>
                             <constraint firstItem="2cp-wx-rVh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jg3-sv-jpH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fAj-sB-kOX" secondAttribute="trailing" constant="15" id="fSA-lT-XAE"/>
                             <constraint firstItem="upx-dD-3EX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gbI-GC-Qkc"/>
                             <constraint firstItem="5Ad-eB-TPq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kbh-2G-LLz"/>
                             <constraint firstItem="5Ad-eB-TPq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mTG-7D-jrD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="upx-dD-3EX" secondAttribute="bottom" id="rns-Pj-aaA"/>
                             <constraint firstItem="2cp-wx-rVh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uMi-pC-8h1"/>
+                            <constraint firstItem="fAj-sB-kOX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="wRP-LT-Ijz"/>
+                            <constraint firstItem="fAj-sB-kOX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zKc-IM-cdq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -97,6 +107,7 @@
                         <outlet property="activityIndicatorView" destination="5Ad-eB-TPq" id="JHd-jW-yUW"/>
                         <outlet property="failureEmojiLabel" destination="2cp-wx-rVh" id="PQv-5a-b63"/>
                         <outlet property="homeCollectionView" destination="upx-dD-3EX" id="sLW-h5-E4f"/>
+                        <outlet property="statusLabel" destination="fAj-sB-kOX" id="rPi-Id-yte"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

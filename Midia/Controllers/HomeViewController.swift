@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum MediaItemViewControllerState {
+    case loading
+    case noResults
+    case failure
+    case ready
+}
+
 class HomeViewController: UIViewController {
     
     let mediaItemCellIdentifier = "mediaItemCell"
@@ -19,20 +26,59 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var failureEmojiLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    var state: MediaItemViewControllerState = .ready {
+        willSet {
+            guard state != newValue else { return }
+            
+            // Ocultamos todas las vistas relacionadas con los estados y después mostramos las que corresponden
+            [homeCollectionView, activityIndicatorView, failureEmojiLabel, statusLabel].forEach { (view) in
+                view?.isHidden = true
+            }
+            
+            // cuando ha cambiado, podemos actualizar la vista en función del estado en el que nos encontremos
+            switch newValue {
+            case .loading:
+                activityIndicatorView.isHidden = false
+            case .noResults:
+                failureEmojiLabel.isHidden = false
+                failureEmojiLabel.text = "🤭"
+                statusLabel.isHidden = false
+                statusLabel.text = "No hay nada que mostrar!!"
+            case .failure:
+                failureEmojiLabel.isHidden = false
+                failureEmojiLabel.text = "❌"
+                statusLabel.isHidden = false
+                statusLabel.text = "Error conectando!!"
+            case .ready:
+                homeCollectionView.isHidden = false
+                homeCollectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activityIndicatorView.isHidden = false
-        
+        //activityIndicatorView.isHidden = false
+        state = .loading
         
         mediaItemProvider.getHomeMediaItems(onSuccess: { [weak self] (mediaItems) in
             self?.mediaItems = mediaItems
-            self?.homeCollectionView.reloadData()
-            self?.activityIndicatorView.isHidden = true
+//            self?.homeCollectionView.reloadData()
+//            self?.activityIndicatorView.isHidden = true
+            self?.state = mediaItems.count > 0 ? .ready : .noResults
+                // la frase de arriba es lo mismo que el if-else de abajo
+//            if mediaItems.count > 0 {
+//                self?.state = .ready
+//            } else {
+//                self?.state = .noResults
+//            }
         }) { [weak self] (error) in
-            self?.activityIndicatorView.isHidden = true
-            self?.failureEmojiLabel.isHidden = false
+//            self?.activityIndicatorView.isHidden = true
+//            self?.failureEmojiLabel.isHidden = false
+            self?.state = .failure
         }
     }
 

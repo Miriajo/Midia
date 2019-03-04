@@ -10,10 +10,11 @@ import Foundation
 
 // A esta clase le pediremos MediaItems pero no sabemos quién nos lo va a dar
 
-class MediaItemProvider {
-    
+class MediaItemProvider {    
+
     let mediaItemKind: MediaItemKind   // tipo
     let apiConsumer: MediaItemAPIConsumable  // servicio (protocolo) - Tendrá un consumer de la API que seam GoogleBooks, Games, iTunesMovies
+    
     
     private init(withMediaItemKind mediaItemKind: MediaItemKind, apiConsumer: MediaItemAPIConsumable) {
         self.mediaItemKind = mediaItemKind
@@ -77,8 +78,8 @@ class MockMediaItemAPIConsumer: MediaItemAPIConsumable {
    //         print(Thread.current.description)
             Thread.sleep(forTimeInterval: 5)
             let mainQueue = DispatchQueue.main
-            mainQueue.async {  // Volvemos a la mainQueue
-                 success([Game(), Game(), Game()])
+            mainQueue.async {  // Volvemos a la mainQueue porque sino no podemos modificar la interfaz gráfica
+                 success([Book(bookId: "1", title: "One book"), Book(bookId: "2", title: "Second Book")])
             }
         }
     }

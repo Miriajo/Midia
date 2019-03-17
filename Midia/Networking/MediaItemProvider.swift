@@ -16,7 +16,7 @@ class MediaItemProvider {
     let apiConsumer: MediaItemAPIConsumable  // servicio (protocolo) - Tendrá un consumer de la API que seam GoogleBooks, Games, iTunesMovies
     
     
-    private init(withMediaItemKind mediaItemKind: MediaItemKind, apiConsumer: MediaItemAPIConsumable) {
+    init(withMediaItemKind mediaItemKind: MediaItemKind, apiConsumer: MediaItemAPIConsumable) {
         self.mediaItemKind = mediaItemKind
         self.apiConsumer = apiConsumer
     }
@@ -26,10 +26,10 @@ class MediaItemProvider {
         switch mediaItemKind {
         case .book:
 //            self.init(withMediaItemKind: mediaItemKind, apiConsumer: GoogleBooksAPIConsumer)
-            self.init(withMediaItemKind: mediaItemKind, apiConsumer: MockMediaItemAPIConsumer())
-        case .game:
-            self.init(withMediaItemKind: mediaItemKind, apiConsumer: MockMediaItemAPIConsumer())
-        case .movie:
+            self.init(withMediaItemKind: mediaItemKind, apiConsumer: GoogleBooksAPIConsumerAlamofire())
+//        case .game:
+//            self.init(withMediaItemKind: mediaItemKind, apiConsumer: MockMediaItemAPIConsumer())
+        case .movie, .game:
              //            self.init(withMediaItemKind: mediaItemKind, apiConsumer: iTunesMoviesAPIConsumer)
             fatalError("MediaItemKind not supported yet :( coming soon") // esto es de la práctica
         
@@ -59,29 +59,58 @@ class MediaItemProvider {
         })
     }
     
-}
-
-class MockMediaItemAPIConsumer: MediaItemAPIConsumable {
-
-    // VERSION 1
-    //    func getLatestMediaItems() -> [MediaItemProvidable] {
-    //        return [Game()]
-    //    }
-    //
-    
-    // VERSION 2
-    // @escaping significa que yo puedo haber terminado mi función pero lo asíncrono podría seguir en funcionamiento, entonces indica que puede terminar cuando acabe.
-    func getLatestMediaItems(onSuccess success: @escaping ([MediaItemProvidable]) -> Void, failure: @escaping (Error?) -> Void)  {
-        let queue = DispatchQueue.global()
-        queue.async {
-            // llama a la API de terceros
-   //         print(Thread.current.description)
-            Thread.sleep(forTimeInterval: 5)
-            let mainQueue = DispatchQueue.main
-            mainQueue.async {  // Volvemos a la mainQueue porque sino no podemos modificar la interfaz gráfica
-                 success([Book(bookId: "1", title: "One book"), Book(bookId: "2", title: "Second Book")])
-            }
+    func getSearchMediaItems(withQueryParams queryParams: String, success: @escaping ([MediaItemProvidable]) -> Void, failure: @escaping (Error?) -> Void) {
+        
+        //
+        apiConsumer.getMediaItems(withQueryParams: queryParams, success: { (mediaItems) in
+            assert(Thread.current == Thread.main)
+            success(mediaItems)
+        }) { (error) in
+            assert(Thread.current == Thread.main)
+            failure(error)
         }
+        
+        
     }
-
+    
+    func getMediaItem(byId mediaItemId: String, success: @escaping (MediaItemDetailedProvidable) -> Void, failure: @escaping (Error?) -> Void) {
+        
+        apiConsumer.getMediaItem(byId: mediaItemId, success: { (mediaItem) in
+            // comprobar que estamos en el hilo principal
+            assert(Thread.current == Thread.main)
+            success(mediaItem)
+        }) { (error) in
+            assert(Thread.current == Thread.main)
+            failure(error)
+        }
+        
+    }
+    
 }
+
+
+// ESTO SE VA A TESTS
+//class MockMediaItemAPIConsumer: MediaItemAPIConsumable {
+//
+//    // VERSION 1
+//    //    func getLatestMediaItems() -> [MediaItemProvidable] {
+//    //        return [Game()]
+//    //    }
+//    //
+//    
+//    // VERSION 2
+//    // @escaping significa que yo puedo haber terminado mi función pero lo asíncrono podría seguir en funcionamiento, entonces indica que puede terminar cuando acabe.
+//    func getLatestMediaItems(onSuccess success: @escaping ([MediaItemProvidable]) -> Void, failure: @escaping (Error?) -> Void)  {
+//        let queue = DispatchQueue.global()
+//        queue.async {
+//            // llama a la API de terceros
+//   //         print(Thread.current.description)
+//            Thread.sleep(forTimeInterval: 5)
+//            let mainQueue = DispatchQueue.main
+//            mainQueue.async {  // Volvemos a la mainQueue porque sino no podemos modificar la interfaz gráfica
+//                 success([Book(bookId: "1", title: "One book"), Book(bookId: "2", title: "Second Book")])
+//            }
+//        }
+//    }
+//
+//}

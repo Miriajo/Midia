@@ -34,7 +34,7 @@ struct Book {
     
 }
 
-extension Book: Decodable {
+extension Book: Codable {
 
     enum CodingKeys: String, CodingKey {
         case bookId = "id"
@@ -89,10 +89,51 @@ extension Book: Decodable {
         price = try listPriceContainer??.decodeIfPresent(Float.self, forKey: .price)
     }
 
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(bookId, forKey: .bookId)
+        
+        var volumeInfoContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .volumeInfo)
+        try volumeInfoContainer.encode(title, forKey: .title)
+        try volumeInfoContainer.encodeIfPresent(authors, forKey: .authors)
+        if let date = publishedDate {
+            try volumeInfoContainer.encode(DateFormatter.booksAPIDateFormatter.string(from: date), forKey: .publishedDate)
+        }
+        try volumeInfoContainer.encodeIfPresent(description, forKey: .description)
+        
+        var imageLinksContainer = volumeInfoContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .imageLinks)
+        try imageLinksContainer.encodeIfPresent(coverURL, forKey: .coverURL)
+        
+        try volumeInfoContainer.encodeIfPresent(rating, forKey: .rating)
+        try volumeInfoContainer.encodeIfPresent(numberOfReviews, forKey: .numberOfReviews)
+        
+        var saleInfoContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .saleInfo)
+        var listPriceContainer = saleInfoContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .listPrice)
+        try listPriceContainer.encodeIfPresent(price, forKey: .price)
+        
+    }
+    
 }
 
 extension Book: MediaItemProvidable {
+    var mediaItemId: String {
+        return bookId
+    }
+    
     var imageURL: URL? {
         return coverURL
     }
+}
+
+extension Book: MediaItemDetailedProvidable {
+    var creatorName: String? {
+        return authors?.joined(separator: ", ")  // [Patrick, Juan] -> Patrick, Juan
+    }
+    
+    var creationDate: Date? {
+        return publishedDate
+    }
+    
+    
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MediaItemCollectionViewCell: UICollectionViewCell {
     
@@ -19,8 +20,18 @@ class MediaItemCollectionViewCell: UICollectionViewCell {
             // hacer lo que quiera cuando cambie el atributo
             // con willSet hago lo que quiera ANTES de que cambie el valor del atributo
             titleLabel.text = mediaItem.title
-            // TODO: poner imagen
+            if let url = mediaItem.imageURL {
+                //imageView.loadImage(fromURL: url)
+                imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
+            }
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageView.sd_cancelCurrentImageLoad()
+        
     }
     
 }

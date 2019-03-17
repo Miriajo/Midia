@@ -2,8 +2,8 @@
 //  UIImageView+Networking.swift
 //  Midia
 //
-//  Created by Casa on 5/3/19.
-//  Copyright © 2019 Casa. All rights reserved.
+//  Created by Miriam Sánchez on 5/3/19.
+//  Copyright © 2019 Miriam Sánchez. All rights reserved.
 //
 
 import UIKit

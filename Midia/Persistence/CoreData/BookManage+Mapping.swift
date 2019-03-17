@@ -2,7 +2,7 @@
 //  BookManage+Mapping.swift
 //  Midia
 //
-//  Created by Casa on 12/3/19.
+//  Created by Miriam Sánchez on 12/3/19.
 //  Copyright © 2019 Yuju. All rights reserved.
 //
 

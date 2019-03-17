@@ -2,8 +2,8 @@
 //  GoogleBooksAPIConsumerURLSession.swift
 //  Midia
 //
-//  Created by Casa on 4/3/19.
-//  Copyright © 2019 Casa. All rights reserved.
+//  Created by Miriam Sánchez on 4/3/19.
+//  Copyright © 2019 Miriam Sánchez. All rights reserved.
 //
 
 import Foundation
@@ -55,7 +55,7 @@ class GoogleBooksAPIConsumerURLSession: MediaItemAPIConsumable {
     }
     
     func getMediaItems(withQueryParams queryParams: String, success: @escaping ([MediaItemProvidable]) -> Void, failure: @escaping (Error?) -> Void) {
-        // TODO: completar en casa
+        // TODO: completar en Miriam Sánchez
     }
     
     func getMediaItem(byId mediaItemId: String, success: @escaping (MediaItemDetailedProvidable) -> Void, failure: @escaping (Error?) -> Void) {

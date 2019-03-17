@@ -54,6 +54,8 @@
 		4AF86670223EF27400801BFE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF8666F223EF27400801BFE /* CoreDataStack.swift */; };
 		4AF86672223EF3F400801BFE /* CoreDataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF86671223EF3F400801BFE /* CoreDataStorageManager.swift */; };
 		4AF86674223EF68900801BFE /* BookManage+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF86673223EF68900801BFE /* BookManage+Mapping.swift */; };
+		4AF86676223EFDE600801BFE /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF86675223EFDE600801BFE /* Movie.swift */; };
+		4AF86678223EFFF500801BFE /* movie-search-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AF86677223EFFF500801BFE /* movie-search-response.json */; };
 		A0EB83960BAB645EADE5D1B1 /* Pods_Midia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8668CAE14CD8F1FC348D11E4 /* Pods_Midia.framework */; };
 		E91A3760CCF84FEF5F722ABC /* Pods_MidiaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE1BB284F124B6351B50680 /* Pods_MidiaTests.framework */; };
 /* End PBXBuildFile section */
@@ -111,6 +113,8 @@
 		4AF8666F223EF27400801BFE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		4AF86671223EF3F400801BFE /* CoreDataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorageManager.swift; sourceTree = "<group>"; };
 		4AF86673223EF68900801BFE /* BookManage+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookManage+Mapping.swift"; sourceTree = "<group>"; };
+		4AF86675223EFDE600801BFE /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		4AF86677223EFFF500801BFE /* movie-search-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "movie-search-response.json"; sourceTree = "<group>"; };
 		8668CAE14CD8F1FC348D11E4 /* Pods_Midia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Midia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF27B917CE7FBC17F397E890 /* Pods-MidiaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MidiaTests.release.xcconfig"; path = "Target Support Files/Pods-MidiaTests/Pods-MidiaTests.release.xcconfig"; sourceTree = "<group>"; };
 		DFE1BB284F124B6351B50680 /* Pods_MidiaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MidiaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +207,7 @@
 				1490EFF42224914D00866151 /* Book.swift */,
 				1490F01E2224A37700866151 /* BookCollection.swift */,
 				4AB41059222C8AF00001420F /* Game.swift */,
+				4AF86675223EFDE600801BFE /* Movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 		1490F01B2224A2A900866151 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4AF86677223EFFF500801BFE /* movie-search-response.json */,
 				1490F01C2224A2D300866151 /* book-search-response.json */,
 			);
 			path = Resources;
@@ -412,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1490F01D2224A2D300866151 /* book-search-response.json in Resources */,
+				4AF86678223EFFF500801BFE /* movie-search-response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +514,7 @@
 				4AB4105E222C8E3F0001420F /* MediaItemProvider.swift in Sources */,
 				4AF8666E223EF07E00801BFE /* Model.xcdatamodeld in Sources */,
 				1490EFF52224914D00866151 /* Book.swift in Sources */,
+				4AF86676223EFDE600801BFE /* Movie.swift in Sources */,
 				4A063A18222DD62E005C6CCD /* Constants.swift in Sources */,
 				4A1752F32225D14A0063C59F /* DateFormatter+Custom.swift in Sources */,
 				4A096CC0222F0CDF00B41A35 /* SearchViewController.swift in Sources */,

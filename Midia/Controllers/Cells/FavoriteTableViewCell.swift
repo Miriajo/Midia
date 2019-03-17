@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class FavoriteTableViewCell: UITableViewCell {
+    
 
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

@@ -41,41 +41,48 @@ extension Movie: Decodable {
     enum CodingKeys: String, CodingKey {
         case movieId = "trackId"
         case title = "trackName"
-        case directors = "artistName"
-        case releaseDate
-        case synopsis = "longDescription"
-        case rating
-        case numberOfReviews
-        case posterURL = "artworkUrl100"
-        case price = "trackHdPrice"
+   //     case directors = "artistName"
+   //     case releaseDate
+   //     case synopsis = "longDescription"
+   //     case posterURL = "artworkUrl100"
+   //     case price = "trackHdPrice"
     }
     
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        movieId = try container.decode(String.self, forKey: .movieId)
-        
+        let id = try container.decode(String.self, forKey: .movieId)
+        movieId = String(id)
+                
         title = try container.decode(String.self, forKey: .title)
         
-        directors = try container.decodeIfPresent([String].self, forKey: .directors)
+//        directors = try container.decodeIfPresent([String].self, forKey: .directors)
+//
+//        if let releaseDateString = try container.decodeIfPresent(String.self, forKey: .releaseDate) {
+//            releaseDate = DateFormatter.booksAPIDateFormatter.date(from: releaseDateString)
+//        } else {
+//            releaseDate = nil
+//        }
+//
+//        synopsis = try container.decodeIfPresent(String.self, forKey: .synopsis)
+//
+//        // El JSON no contiene estos datos, la API de iTunes no los devuelve
+//        rating = nil
+//        numberOfReviews = nil
+//
+//        posterURL = try container.decodeIfPresent(URL.self, forKey: .posterURL)
+//
+//        price = try container.decodeIfPresent(Float.self, forKey: .price)
         
-        if let releaseDateString = try container.decodeIfPresent(String.self, forKey: .releaseDate) {
-            releaseDate = DateFormatter.booksAPIDateFormatter.date(from: releaseDateString)
-        } else {
-            releaseDate = nil
-        }
         
-        synopsis = try container.decodeIfPresent(String.self, forKey: .synopsis)
-        
-        // El JSON no contiene estos datos, la API de iTunes no los devuelve
+        directors = nil
+        releaseDate = nil
+        synopsis = nil
         rating = nil
         numberOfReviews = nil
-        
-        posterURL = try container.decodeIfPresent(URL.self, forKey: .posterURL)
-        
-        price = try container.decodeIfPresent(Float.self, forKey: .price)
-        
+        posterURL = nil
+        price = nil
         
     }
     

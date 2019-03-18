@@ -10,9 +10,8 @@ import Foundation
 
 struct MovieCollection {
     
-    let kind: String
-    let totalItems: Int
-    let items: [Movie]?
+    let resultCount: Int
+    let results: [Movie]?
     
 }
 

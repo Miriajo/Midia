@@ -91,3 +91,19 @@ extension Movie: MediaItemProvidable {
     }
     
 }
+
+
+extension Movie: MediaItemDetailedProvidable {
+    var creatorName: String? {
+        return directors?.joined(separator: ", ")
+    }
+    
+    var creationDate: Date? {
+        return releaseDate
+    }
+    
+    var description: String? {
+        return synopsis
+    }
+
+}

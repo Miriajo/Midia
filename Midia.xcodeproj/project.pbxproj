@@ -60,6 +60,8 @@
 		4AF86674223EF68900801BFE /* BookManage+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF86673223EF68900801BFE /* BookManage+Mapping.swift */; };
 		4AF86676223EFDE600801BFE /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF86675223EFDE600801BFE /* Movie.swift */; };
 		4AF86678223EFFF500801BFE /* movie-search-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AF86677223EFFF500801BFE /* movie-search-response.json */; };
+		4AFC13042240379900EBEF1A /* ITunesMoviesAPIConsumerNSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC13032240379900EBEF1A /* ITunesMoviesAPIConsumerNSURLSession.swift */; };
+		4AFF384E2240FE6A00F3BE13 /* ITunesMoviesAPIConsumerAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF384D2240FE6A00F3BE13 /* ITunesMoviesAPIConsumerAlamofire.swift */; };
 		A0EB83960BAB645EADE5D1B1 /* Pods_Midia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8668CAE14CD8F1FC348D11E4 /* Pods_Midia.framework */; };
 		E91A3760CCF84FEF5F722ABC /* Pods_MidiaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE1BB284F124B6351B50680 /* Pods_MidiaTests.framework */; };
 /* End PBXBuildFile section */
@@ -121,6 +123,8 @@
 		4AF86673223EF68900801BFE /* BookManage+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookManage+Mapping.swift"; sourceTree = "<group>"; };
 		4AF86675223EFDE600801BFE /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		4AF86677223EFFF500801BFE /* movie-search-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "movie-search-response.json"; sourceTree = "<group>"; };
+		4AFC13032240379900EBEF1A /* ITunesMoviesAPIConsumerNSURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesMoviesAPIConsumerNSURLSession.swift; sourceTree = "<group>"; };
+		4AFF384D2240FE6A00F3BE13 /* ITunesMoviesAPIConsumerAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesMoviesAPIConsumerAlamofire.swift; sourceTree = "<group>"; };
 		8668CAE14CD8F1FC348D11E4 /* Pods_Midia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Midia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF27B917CE7FBC17F397E890 /* Pods-MidiaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MidiaTests.release.xcconfig"; path = "Target Support Files/Pods-MidiaTests/Pods-MidiaTests.release.xcconfig"; sourceTree = "<group>"; };
 		DFE1BB284F124B6351B50680 /* Pods_MidiaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MidiaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +310,8 @@
 				4AB4105D222C8E3F0001420F /* MediaItemProvider.swift */,
 				4A063A15222DC8B3005C6CCD /* GoogleBooksAPIConsumerURLSession.swift */,
 				4A1B70B3222DDE57008EF7C6 /* GoogleBooksAPIConsumerAlamofire.swift */,
+				4AFC13032240379900EBEF1A /* ITunesMoviesAPIConsumerNSURLSession.swift */,
+				4AFF384D2240FE6A00F3BE13 /* ITunesMoviesAPIConsumerAlamofire.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 				4A2033C4223715C40030CEBE /* FavoritesProvidable.swift in Sources */,
 				4A2033BF22370EEF0030CEBE /* FavoriteTableViewCell.swift in Sources */,
 				1490EFDF22248C5F00866151 /* AppDelegate.swift in Sources */,
+				4AFC13042240379900EBEF1A /* ITunesMoviesAPIConsumerNSURLSession.swift in Sources */,
 				4AB41064222C8FBF0001420F /* MediaItemAPIConsumable.swift in Sources */,
 				1490F01F2224A37700866151 /* BookCollection.swift in Sources */,
 				4AB41057222C87B00001420F /* MediaItemProvidable.swift in Sources */,
@@ -532,6 +539,7 @@
 				4A1B70BB222DE8CE008EF7C6 /* UIImageView+Networking.swift in Sources */,
 				4A1752F62225E0500063C59F /* HomeViewController.swift in Sources */,
 				4AAAEC8C22304D6F00C09D41 /* MediaItemDetailedProvidable.swift in Sources */,
+				4AFF384E2240FE6A00F3BE13 /* ITunesMoviesAPIConsumerAlamofire.swift in Sources */,
 				4AF86670223EF27400801BFE /* CoreDataStack.swift in Sources */,
 				4AB4105A222C8AF00001420F /* Game.swift in Sources */,
 				4A2033C1223712430030CEBE /* FavoritesViewController.swift in Sources */,

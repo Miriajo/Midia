@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Tener un servicio que le diga el tipo de mediaItem que quiera mostrar y le diga a mi homeScreen - oye, muestra los últimos estrenos
         // let mediaProvider = MediaItemProvider(withMediaItemKind: .book)
         // homeViewController.mediaItems = mediaProvider.getHomeMediaItems()
-        let currentMediaItemProvider = MediaItemProvider(withMediaItemKind: .book)
+        let currentMediaItemProvider = MediaItemProvider(withMediaItemKind: .movie)
         homeViewController.mediaItemProvider = currentMediaItemProvider
         searchViewController.mediaItemProvider = currentMediaItemProvider
         

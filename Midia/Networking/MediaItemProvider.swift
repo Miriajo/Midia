@@ -25,11 +25,14 @@ class MediaItemProvider {
       // self.mediaItemKind = mediaItemKind
         switch mediaItemKind {
         case .book:
-//            self.init(withMediaItemKind: mediaItemKind, apiConsumer: GoogleBooksAPIConsumer)
-            self.init(withMediaItemKind: mediaItemKind, apiConsumer: GoogleBooksAPIConsumerAlamofire())
+            self.init(withMediaItemKind: mediaItemKind, apiConsumer: GoogleBooksAPIConsumerURLSession())
+//           self.init(withMediaItemKind: mediaItemKind, apiConsumer: GoogleBooksAPIConsumerAlamofire())
 //        case .game:
 //            self.init(withMediaItemKind: mediaItemKind, apiConsumer: MockMediaItemAPIConsumer())
-        case .movie, .game:
+        case .movie:
+            self.init(withMediaItemKind: mediaItemKind, apiConsumer: ITunesMoviesAPIConsumerNSURLSession())
+            //self.init(withMediaItemKind: mediaItemKind, apiConsumer: ITunesMoviesAPIConsumerAlamofire())
+        case .game:
              //            self.init(withMediaItemKind: mediaItemKind, apiConsumer: iTunesMoviesAPIConsumer)
             fatalError("MediaItemKind not supported yet :( coming soon") // esto es de la práctica
         

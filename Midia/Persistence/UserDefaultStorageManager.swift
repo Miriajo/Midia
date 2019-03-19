@@ -81,7 +81,12 @@ class UserDefaultStorageManager: FavoritesProvidable {
         do {
             switch  mediaItemKind {
             case .book:
-                userDefaults.set(try encoder.encode(favorites as! [Book]), forKey: favoritesKey)
+//                userDefaults.set(try encoder.encode(favorites as! [Book]), forKey: favoritesKey)
+
+                // salvar sin forzar el cast
+                if let books = favorites as? [Book] {
+                    userDefaults.set(try encoder.encode(books), forKey: favoritesKey)
+                }
             default:
                 fatalError("not supported yet")
             }

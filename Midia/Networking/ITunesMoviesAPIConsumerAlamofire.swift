@@ -55,7 +55,24 @@ class ITunesMoviesAPIConsumerAlamofire: MediaItemAPIConsumable {
     }
     
     func getMediaItem(byId mediaItemId: String, success: @escaping (MediaItemDetailedProvidable) -> Void, failure: @escaping (Error?) -> Void) {
-        // TODO
+        
+        Alamofire.request(ITunesMoviesAPIConstants.urlForMovie(withId: mediaItemId)).responseData { (response) in
+            
+            switch response.result {
+            case .failure(let error):
+                failure(error)
+            case .success(let value):
+                do {
+                    let decoder = JSONDecoder()
+                    let movie = try decoder.decode(Movie.self, from: value)
+                    success(movie)
+                } catch {
+                    failure(error)
+                }
+            }
+        }
+        
+        
     }
     
 }

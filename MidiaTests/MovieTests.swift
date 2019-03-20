@@ -52,5 +52,41 @@ class MovieTests: XCTestCase {
         
     }
     
+    func testEncodeMovie() {
+        do{
+            let movieData = try encoder.encode(bestMovie)
+            
+            XCTAssertNotNil(movieData)
+            
+        } catch {
+            XCTFail()
+        }
+        
+    }
+    
+    func testDecodeEncodedDetailedMovie() {
+        
+//        do {
+//
+//            let movieData = try encoder.encode(bestMovie)
+//            XCTAssertNotNil(movieData)
+//
+//            let movie = try decoder.decode(Movie.self, from: movieData)
+//
+//            XCTAssertNotNil(movie)
+//            XCTAssertNotNil(movie.movieId)
+//            XCTAssertNotNil(movie.title)
+//            XCTAssertNotNil(movie.directors)
+//            XCTAssert(movie.directors!.count > 0)
+//            XCTAssertNotNil(movie.releaseDate)
+//            XCTAssertNotNil(movie.synopsis)
+//            XCTAssertNotNil(movie.posterURL)
+//            XCTAssertNotNil(movie.price)
+//
+//        } catch {
+//            XCTFail()
+//        }
+        
+    }
     
 }

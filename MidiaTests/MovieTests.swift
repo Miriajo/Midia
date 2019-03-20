@@ -64,8 +64,8 @@ class MovieTests: XCTestCase {
         
     }
     
-    func testDecodeEncodedDetailedMovie() {
-        
+//    func testDecodeEncodedDetailedMovie() {
+//
 //        do {
 //
 //            let movieData = try encoder.encode(bestMovie)
@@ -77,7 +77,7 @@ class MovieTests: XCTestCase {
 //            XCTAssertNotNil(movie.movieId)
 //            XCTAssertNotNil(movie.title)
 //            XCTAssertNotNil(movie.directors)
-//            XCTAssert(movie.directors!.count > 0)
+//           // XCTAssert(movie.directors!.count > 0)
 //            XCTAssertNotNil(movie.releaseDate)
 //            XCTAssertNotNil(movie.synopsis)
 //            XCTAssertNotNil(movie.posterURL)
@@ -86,7 +86,7 @@ class MovieTests: XCTestCase {
 //        } catch {
 //            XCTFail()
 //        }
-        
-    }
+//
+//    }
     
 }

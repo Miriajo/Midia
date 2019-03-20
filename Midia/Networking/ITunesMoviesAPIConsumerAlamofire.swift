@@ -64,8 +64,8 @@ class ITunesMoviesAPIConsumerAlamofire: MediaItemAPIConsumable {
             case .success(let value):
                 do {
                     let decoder = JSONDecoder()
-                    let movie = try decoder.decode(Movie.self, from: value)
-                    success(movie)
+                    let movie = try decoder.decode(MovieCollection.self, from: value)
+                    success((movie.results?[0])!)
                 } catch {
                     failure(error)
                 }

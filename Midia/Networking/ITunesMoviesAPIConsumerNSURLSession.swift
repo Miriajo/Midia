@@ -83,8 +83,8 @@ class ITunesMoviesAPIConsumerNSURLSession: MediaItemAPIConsumable {
             if let data = data {
                 do {
                     let decoder = JSONDecoder()
-                    let movie = try decoder.decode(Movie.self, from: data)
-                    DispatchQueue.main.async { success(movie) }
+                    let movie = try decoder.decode(MovieCollection.self, from: data)
+                    DispatchQueue.main.async { success((movie.results?[0])!) }
                 } catch {
                     DispatchQueue.main.async { failure(error) }
                 }

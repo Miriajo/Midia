@@ -52,12 +52,8 @@ extension Movie: Codable {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        do{
-            let id = try container.decode(Int.self, forKey: .movieId)
-            movieId = String(id)
-        } catch {
-            movieId = try container.decode(String.self, forKey: .movieId)
-        }
+        let id = try container.decode(Int.self, forKey: .movieId)
+        movieId = String(id)
         
         title = try container.decode(String.self, forKey: .title)
         

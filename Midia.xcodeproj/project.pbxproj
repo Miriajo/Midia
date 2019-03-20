@@ -37,6 +37,8 @@
 		4A2033C4223715C40030CEBE /* FavoritesProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2033C3223715C40030CEBE /* FavoritesProvidable.swift */; };
 		4A2033C62237178F0030CEBE /* UserDefaultStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2033C52237178F0030CEBE /* UserDefaultStorageManager.swift */; };
 		4A2033C822371F830030CEBE /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2033C722371F830030CEBE /* StorageManager.swift */; };
+		4A6187A722424B51001B3ADE /* ITunesMoviesAPIConsumerNSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC13032240379900EBEF1A /* ITunesMoviesAPIConsumerNSURLSession.swift */; };
+		4A6187A822424B53001B3ADE /* ITunesMoviesAPIConsumerAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF384D2240FE6A00F3BE13 /* ITunesMoviesAPIConsumerAlamofire.swift */; };
 		4A6E1710223F9CDE004A6ACE /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E170F223F9CDE004A6ACE /* MovieTests.swift */; };
 		4A6E1711223F9CE7004A6ACE /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF86675223EFDE600801BFE /* Movie.swift */; };
 		4A6E1713223F9FC6004A6ACE /* MovieCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E1712223F9FC6004A6ACE /* MovieCollection.swift */; };
@@ -559,8 +561,10 @@
 				4A1B70B6222DE2B3008EF7C6 /* GoogleBooksAPIConsumerAlamofire.swift in Sources */,
 				4AB41058222C87B00001420F /* MediaItemProvidable.swift in Sources */,
 				4A6E1710223F9CDE004A6ACE /* MovieTests.swift in Sources */,
+				4A6187A822424B53001B3ADE /* ITunesMoviesAPIConsumerAlamofire.swift in Sources */,
 				4A6E1711223F9CE7004A6ACE /* Movie.swift in Sources */,
 				4ABF6000223EB996009A4C0E /* MediaItemAPIConsumable.swift in Sources */,
+				4A6187A722424B51001B3ADE /* ITunesMoviesAPIConsumerNSURLSession.swift in Sources */,
 				4AB41062222C8EC30001420F /* MediaItemKind.swift in Sources */,
 				4AA74C56223EE38C00FEF115 /* MediaItemDetailedProvidable.swift in Sources */,
 				4A1752F42225D3E70063C59F /* DateFormatter+Custom.swift in Sources */,

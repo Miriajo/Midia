@@ -17,27 +17,41 @@ class ITunesMoviesAPIConsumerAlamofire: MediaItemAPIConsumable {
             switch response.result {
             case .failure(let error):
                 failure(error)
-            case .success(_):
-                if let data = response.data {
-                    do {
-                        let decoder = JSONDecoder()
-                        let movieCollection = try decoder.decode(MovieCollection.self, from: data)
-                        success(movieCollection.results ?? [])
-                    } catch {
-                        failure(error)
-                    }
-                } else {
-                    success([])
+            case .success(let value):
+                do {
+                    let decoder = JSONDecoder()
+                    let movieCollection = try decoder.decode(MovieCollection.self, from: value)
+                    success(movieCollection.results ?? [])
+                } catch {
+                    failure(error)
                 }
             }
-            
         }
         
         
     }
     
     func getMediaItems(withQueryParams queryParams: String, success: @escaping ([MediaItemProvidable]) -> Void, failure: @escaping (Error?) -> Void) {
-        // TODO
+        
+        let paramsList = queryParams.components(separatedBy: " ")
+        
+        Alamofire.request(ITunesMoviesAPIConstants.getITunesAbsoluteURL(withQueryParams: paramsList)).responseData { (response) in
+            
+            switch response.result {
+            case .failure(let error):
+                failure(error)
+            case .success(let value):
+                do {
+                    let decoder = JSONDecoder()
+                    let movieCollection = try decoder.decode(MovieCollection.self, from: value)
+                    success(movieCollection.results ?? [])
+                } catch {
+                    failure(error)
+                }
+            }
+        }
+        
+        
     }
     
     func getMediaItem(byId mediaItemId: String, success: @escaping (MediaItemDetailedProvidable) -> Void, failure: @escaping (Error?) -> Void) {

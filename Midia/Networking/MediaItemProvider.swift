@@ -30,8 +30,8 @@ class MediaItemProvider {
 //        case .game:
 //            self.init(withMediaItemKind: mediaItemKind, apiConsumer: MockMediaItemAPIConsumer())
         case .movie:
-            self.init(withMediaItemKind: mediaItemKind, apiConsumer: ITunesMoviesAPIConsumerNSURLSession())
-            //self.init(withMediaItemKind: mediaItemKind, apiConsumer: ITunesMoviesAPIConsumerAlamofire())
+            //self.init(withMediaItemKind: mediaItemKind, apiConsumer: ITunesMoviesAPIConsumerNSURLSession())
+            self.init(withMediaItemKind: mediaItemKind, apiConsumer: ITunesMoviesAPIConsumerAlamofire())
         case .game:
              //            self.init(withMediaItemKind: mediaItemKind, apiConsumer: iTunesMoviesAPIConsumer)
             fatalError("MediaItemKind not supported yet :( coming soon") // esto es de la práctica

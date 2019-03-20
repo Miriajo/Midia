@@ -57,7 +57,7 @@ struct ITunesMoviesAPIConstants {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "itunes.apple.com"
-        components.path = "/search"
+        components.path = "/lookup"
         components.queryItems = [URLQueryItem(name: "id", value: movieId), URLQueryItem(name: "country", value: "es")]
         
         return components.url!

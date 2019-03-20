@@ -13,7 +13,7 @@ struct Movie {
     
     let movieId: String
     let title: String
-    let directors: [String]?
+    var directors: [String]?
     let releaseDate: Date?
     let synopsis: String?
     let posterURL: URL?
@@ -57,8 +57,10 @@ extension Movie: Decodable {
                 
         title = try container.decode(String.self, forKey: .title)
         
-        directors = try container.decodeIfPresent([String].self, forKey: .directors)
-
+        let artists = try container.decodeIfPresent(String.self, forKey: .directors)
+        
+        directors = artists?.components(separatedBy: ", ")
+        
         if let releaseDateString = try container.decodeIfPresent(String.self, forKey: .releaseDate) {
             releaseDate = DateFormatter.booksAPIDateFormatter.date(from: releaseDateString)
         } else {
@@ -77,6 +79,26 @@ extension Movie: Decodable {
         
     }
     
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(movieId, forKey: .movieId)
+        
+        try container.encode(title, forKey: .title)
+        
+        try container.encodeIfPresent(directors, forKey: .directors)
+        
+        if let date = releaseDate {
+            try container.encode(DateFormatter.booksAPIDateFormatter.string(from: date), forKey: .releaseDate)
+        }
+        
+        try container.encodeIfPresent(synopsis, forKey: .synopsis)
+        
+        try container.encodeIfPresent(posterURL, forKey: .posterURL)
+        
+        try container.encodeIfPresent(price, forKey: .price)
+        
+    }
     
 }
 

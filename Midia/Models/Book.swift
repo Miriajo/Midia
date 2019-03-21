@@ -66,7 +66,7 @@ extension Book: Codable {
         
         // Formatear la fecha desde el String con la extension que hemos creado
         if let publishedDateString = try volumeInfoContainer.decodeIfPresent(String.self, forKey: .publishedDate) {
-            publishedDate = DateFormatter.booksAPIDateFormatter.date(from: publishedDateString)
+            publishedDate = DateFormatter.shortAPIDateFormatter.date(from: publishedDateString)
         } else {
             publishedDate = nil
         }
@@ -99,7 +99,7 @@ extension Book: Codable {
         try volumeInfoContainer.encode(title, forKey: .title)
         try volumeInfoContainer.encodeIfPresent(authors, forKey: .authors)
         if let date = publishedDate {
-            try volumeInfoContainer.encode(DateFormatter.booksAPIDateFormatter.string(from: date), forKey: .publishedDate)
+            try volumeInfoContainer.encode(DateFormatter.shortAPIDateFormatter.string(from: date), forKey: .publishedDate)
         }
         try volumeInfoContainer.encodeIfPresent(description, forKey: .description)
         

@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Cargar los favoritos
         //StorageManager.shared.add(favorite: Book(bookId: "1", title: "HOLA MUNDO FAVORITOS"))
+        StorageManager.shared.add(favorite: Movie(movieId: 3, title: "HOLA MUNDO FAVORITOS"))
         
         return true
     }

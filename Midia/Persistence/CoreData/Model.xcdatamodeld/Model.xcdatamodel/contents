@@ -16,7 +16,7 @@
         <relationship name="authors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Author" inverseName="book" inverseEntity="Author" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-63" positionY="-18" width="128" height="180"/>
         <element name="Author" positionX="-54" positionY="54" width="128" height="75"/>
+        <element name="Book" positionX="-236.9921875" positionY="-198.99609375" width="128" height="180"/>
     </elements>
 </model>

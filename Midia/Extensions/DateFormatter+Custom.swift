@@ -11,11 +11,20 @@ import Foundation
 extension DateFormatter {
     
     // Constante estática de clase - Propiedad computada
-    static let booksAPIDateFormatter: DateFormatter = {
+    static let shortAPIDateFormatter: DateFormatter = {
         // Le asignamos un closure que devuelve un formato
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }() // los paréntesis del final es para que se ejecute
-        
+
+    static let longAPIDateFormatter: DateFormatter = {
+       
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyy-MM-dd'T'HH:mm:ssZ"
+        return formatter
+    }()
+    
 }
+
+

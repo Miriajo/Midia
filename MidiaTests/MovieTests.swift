@@ -20,7 +20,7 @@ class MovieTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        bestMovie = Movie(movieId: "1", title: "Top Gun - Ídolos del aire", directors: ["Tony Scott"], releaseDate: Date(timeIntervalSinceNow: 13213), synopsis: "Una hábil conbinación de acción, música e increíble fotografía aérea, hicieron de Top Gun Ídolos del Aire el gran éxito de 1986. Se trata de una apasionante mirada a los peligros y emociones que esperan a cada piloto de una prestigiosa academia de aviación del ejército. Tom Cruise ofrece una soberbia actuación como Maverick Mitchell, un joven y arriesgado piloto destinado a convertirse en el mejor, y Kelly McGillis resulta brillante como la profesora civil que enseña a Maverick algunas cosas que no se pueden aprender en clase.", posterURL: posterURL, rating: nil, numberOfReviews: nil, price: 9)
+        bestMovie = Movie(movieId: 391465654, title: "Top Gun - Ídolos del aire", directors: ["Tony Scott"], releaseDate: Date(timeIntervalSinceNow: 13213), synopsis: "Una hábil conbinación de acción, música e increíble fotografía aérea, hicieron de Top Gun Ídolos del Aire el gran éxito de 1986. Se trata de una apasionante mirada a los peligros y emociones que esperan a cada piloto de una prestigiosa academia de aviación del ejército. Tom Cruise ofrece una soberbia actuación como Maverick Mitchell, un joven y arriesgado piloto destinado a convertirse en el mejor, y Kelly McGillis resulta brillante como la profesora civil que enseña a Maverick algunas cosas que no se pueden aprender en clase.", posterURL: posterURL, rating: nil, numberOfReviews: nil, price: 9)
         
     }
    
@@ -64,29 +64,32 @@ class MovieTests: XCTestCase {
         
     }
     
-//    func testDecodeEncodedDetailedMovie() {
-//
-//        do {
-//
-//            let movieData = try encoder.encode(bestMovie)
-//            XCTAssertNotNil(movieData)
-//
-//            let movie = try decoder.decode(Movie.self, from: movieData)
-//
-//            XCTAssertNotNil(movie)
-//            XCTAssertNotNil(movie.movieId)
-//            XCTAssertNotNil(movie.title)
-//            XCTAssertNotNil(movie.directors)
-//           // XCTAssert(movie.directors!.count > 0)
-//            XCTAssertNotNil(movie.releaseDate)
-//            XCTAssertNotNil(movie.synopsis)
-//            XCTAssertNotNil(movie.posterURL)
-//            XCTAssertNotNil(movie.price)
-//
-//        } catch {
-//            XCTFail()
-//        }
-//
-//    }
+    func testDecodeEncodedDetailedMovie() {
+
+        do {
+
+            let movieData = try encoder.encode(bestMovie)
+            XCTAssertNotNil(movieData)
+
+            let movie = try decoder.decode(Movie.self, from: movieData)
+
+            XCTAssertNotNil(movie)
+            XCTAssertNotNil(movie.movieId)
+            XCTAssertNotNil(movie.title)
+            XCTAssertNotNil(movie.directors)
+            XCTAssertNotNil(movie.releaseDate)
+            XCTAssertNotNil(movie.synopsis)
+            XCTAssertNotNil(movie.posterURL)
+            XCTAssertNotNil(movie.price)
+
+        } catch {
+            XCTFail()
+        }
+
+    }
+    
+    func testPersistOnUserDefaults() {
+      
+    }
     
 }

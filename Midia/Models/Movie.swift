@@ -11,17 +11,17 @@ import Foundation
 
 struct Movie {
     
-    let movieId: String
+    let movieId: Int
     let title: String
     var directors: [String]?
     let releaseDate: Date?
     let synopsis: String?
     let posterURL: URL?
-    let rating: Float?
+    var rating: Float?
     let numberOfReviews: Int?
     let price: Float?
     
-    init(movieId: String, title: String, directors: [String]? = nil, releaseDate: Date? = nil, synopsis: String? = nil, posterURL: URL? = nil, rating: Float? = nil, numberOfReviews: Int? = nil, price: Float? = nil) {
+    init(movieId: Int, title: String, directors: [String]? = nil, releaseDate: Date? = nil, synopsis: String? = nil, posterURL: URL? = nil, rating: Float? = nil, numberOfReviews: Int? = nil, price: Float? = nil) {
         self.movieId = movieId
         self.title = title
         self.directors = directors
@@ -46,14 +46,15 @@ extension Movie: Codable {
         case synopsis = "longDescription"
         case posterURL = "artworkUrl100"
         case price = "trackHdPrice"
+        case rating
+        case numberOfReviews
     }
     
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let id = try container.decode(Int.self, forKey: .movieId)
-        movieId = String(id)
+        movieId = try container.decode(Int.self, forKey: .movieId)
         
         title = try container.decode(String.self, forKey: .title)
         
@@ -62,7 +63,7 @@ extension Movie: Codable {
         directors = artists?.components(separatedBy: ", ")
         
         if let releaseDateString = try container.decodeIfPresent(String.self, forKey: .releaseDate) {
-            releaseDate = DateFormatter.booksAPIDateFormatter.date(from: releaseDateString)
+            releaseDate = DateFormatter.longAPIDateFormatter.date(from: releaseDateString)
         } else {
             releaseDate = nil
         }
@@ -76,21 +77,21 @@ extension Movie: Codable {
         posterURL = try container.decodeIfPresent(URL.self, forKey: .posterURL)
 
         price = try container.decodeIfPresent(Float.self, forKey: .price)
-        
+
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
-        let id = movieId
-        try container.encode(Int(id), forKey: .movieId)
+        //let id = movieId
+        try container.encode(movieId, forKey: .movieId)
         
         try container.encode(title, forKey: .title)
         
         try container.encodeIfPresent(directors, forKey: .directors)
         
         if let date = releaseDate {
-            try container.encode(DateFormatter.booksAPIDateFormatter.string(from: date), forKey: .releaseDate)
+            try container.encode(DateFormatter.longAPIDateFormatter.string(from: date), forKey: .releaseDate)
         }
         
         try container.encodeIfPresent(synopsis, forKey: .synopsis)
@@ -99,6 +100,10 @@ extension Movie: Codable {
         
         try container.encodeIfPresent(price, forKey: .price)
         
+        // Propiedades que no existen
+        try container.encodeIfPresent(rating, forKey: .rating)
+        try container.encodeIfPresent(numberOfReviews, forKey: .numberOfReviews)
+        
     }
     
 }
@@ -106,7 +111,7 @@ extension Movie: Codable {
 
 extension Movie: MediaItemProvidable {
     var mediaItemId: String {
-        return movieId
+        return String(movieId)
     }
     
     var imageURL: URL? {

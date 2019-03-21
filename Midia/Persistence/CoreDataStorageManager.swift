@@ -110,6 +110,12 @@ class CoreDataStorageManager: FavoritesProvidable {
                 assertionFailure("error saving context")
             }
             
+       // } else if let movie = favorite as? Movie {
+            
+          //  let movieManaged = BookManaged(context: context)
+        
+            
+            
         } else {
             fatalError("Not supported yet :(")
         }

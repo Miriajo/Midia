@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 
 struct Movie {
@@ -88,7 +89,7 @@ extension Movie: Codable {
         
         try container.encode(title, forKey: .title)
         
-        try container.encodeIfPresent(directors, forKey: .directors)
+        try container.encodeIfPresent(directors?.joined(separator: ", "), forKey: .directors)
         
         if let date = releaseDate {
             try container.encode(DateFormatter.longAPIDateFormatter.string(from: date), forKey: .releaseDate)

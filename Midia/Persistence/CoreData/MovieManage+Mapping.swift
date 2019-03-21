@@ -8,19 +8,19 @@
 
 import Foundation
 
-//extension MovieManaged {
-//    
-//    func mappedObject() -> Movie {
-//        
-//        let authorsList = authors?.map({ (author) -> String in
-//            let author = author as! Author
-//            return author.fullName!
-//        })
-//        
-//        let url: URL? = posterURL != nil ? URL(string: posterURL!) : nil
-//        
-//        return Movie(movieId: Int(id)!, title: movieTitle!, authors: authorsList, releaseDate: releaseDate, synopsis: movieSynopsis, posterURL: url, rating: rating, numberOfReviews: Int(numberOfReviews), price: price)
-//        
-//    }
-//    
-//}
+extension MovieManaged {
+    
+    func mappedObject() -> Movie {
+       
+        let directorsList = movieDirectors?.map({ (director) -> String in
+            let director = director as! Director
+            return director.fullName!
+        })
+
+        let url: URL? = posterURL != nil ? URL(string: posterURL!) : nil
+
+        return Movie(movieId: Int(movieId), title: movieTitle!, directors: directorsList, releaseDate: releaseDate, synopsis: movieDesc, posterURL: url, rating: rating, numberOfReviews: Int(numberOfReviews), price: price)
+        
+    }
+    
+}

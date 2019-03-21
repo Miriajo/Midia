@@ -36,7 +36,7 @@ class FavoriteTableViewCell: UITableViewCell {
                 creatorsLabel.isHidden = true
             }
             if let dated = mediaItem.creationDate {
-                createdOnLabel.text = "fecha: \(dated)"
+                createdOnLabel.text = "fecha: \(DateFormatter.shortAPIDateFormatter.string(from: dated))"
             } else {
                 createdOnLabel.isHidden = true
             }

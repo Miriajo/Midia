@@ -26,8 +26,8 @@ class CoreDataStorageManager: FavoritesProvidable {
         // crear un contexto de hilo principal
         let context = stack.persistentContainer.viewContext
         
-        switch mediaItemKind.rawValue {
-        case "book":
+        switch mediaItemKind {
+        case .book:
             // Query al Storage
             let fetchRequest: NSFetchRequest<BookManaged> = BookManaged.fetchRequest()
             
@@ -48,7 +48,7 @@ class CoreDataStorageManager: FavoritesProvidable {
                 assertionFailure("Error fetching media items")
                 return nil
             }
-        case "movie":
+        case .movie:
             // Query al Storage
             let fetchRequest: NSFetchRequest<MovieManaged> = MovieManaged.fetchRequest()
             

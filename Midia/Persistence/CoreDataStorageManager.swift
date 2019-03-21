@@ -82,8 +82,8 @@ class CoreDataStorageManager: FavoritesProvidable {
      
         let context = stack.persistentContainer.viewContext
         
-        switch mediaItemKind.rawValue {
-        case "book":
+        switch mediaItemKind {
+        case .book:
             // Query al Storage
             let fetchRequest: NSFetchRequest<BookManaged> = BookManaged.fetchRequest()
             
@@ -103,7 +103,7 @@ class CoreDataStorageManager: FavoritesProvidable {
                 assertionFailure("Error fetching media item by id \(favoriteId)")
                 return nil
             }
-        case "movie":
+        case .movie:
             // Query al Storage
             let fetchRequest: NSFetchRequest<MovieManaged> = MovieManaged.fetchRequest()
             
@@ -209,8 +209,8 @@ class CoreDataStorageManager: FavoritesProvidable {
         let context = stack.persistentContainer.viewContext
         
         
-        switch mediaItemKind.rawValue {
-        case "book":
+        switch mediaItemKind {
+        case .book:
             // Query al Storage
             let fetchRequest: NSFetchRequest<BookManaged> = BookManaged.fetchRequest()
             
@@ -228,7 +228,7 @@ class CoreDataStorageManager: FavoritesProvidable {
             } catch {
                 assertionFailure("Error removing media item with id \(favoriteId)")
             }
-        case "movie":
+        case .movie:
             // Query al Storage
             let fetchRequest: NSFetchRequest<MovieManaged> = MovieManaged.fetchRequest()
             

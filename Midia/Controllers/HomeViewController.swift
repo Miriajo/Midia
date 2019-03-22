@@ -58,6 +58,22 @@ class HomeViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.mediaItemProvider = MediaItemProvider(withMediaItemKind: MediaRepository.shared.mediaItemProvider.mediaItemKind)
+        
+        self.state = .loading
+        
+        self.mediaItemProvider.getHomeMediaItems(onSuccess: { [weak self] (mediaItems) in
+            self?.mediaItems = mediaItems
+            self?.state = mediaItems.count > 0 ? .ready : .noResults
+          
+        }) { [weak self] (error) in
+            self?.state = .failure
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

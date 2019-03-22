@@ -22,6 +22,18 @@ class SearchViewController: UIViewController {
     
     var mediaItems: [MediaItemProvidable] = []
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.mediaItemProvider = MediaItemProvider(withMediaItemKind: MediaRepository.shared.mediaItemProvider.mediaItemKind)
+            
+            self.searchBar.text = ""
+            self.mediaItems = []
+            self.collectionView.reloadData()
+        
+    }
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()

@@ -21,7 +21,7 @@ class FavoritesViewController: UIViewController {
         
         // coger los favoritos desde el storage
 
-        if let storeFavorites = StorageManager.shared.getFavorites() {
+        if let storeFavorites = MediaRepository.shared.storageManager.favorites?.getFavorites() {
             favorites = storeFavorites
             tableView.reloadData()
         }

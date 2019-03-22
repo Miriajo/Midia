@@ -10,6 +10,121 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Select Media View Controller-->
+        <scene sceneID="Tjx-ag-UMt">
+            <objects>
+                <viewController id="WYw-iY-Kc5" customClass="SelectMediaViewController" customModule="Midia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i99-aM-dZ6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UN3-gF-wdv">
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Media" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aH-N8-OET">
+                                        <rect key="frame" x="16" y="0.0" width="343" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="jPB-wM-RqL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, select the Media you want to work with:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xa-AE-Ndp">
+                                        <rect key="frame" x="16" y="76" width="343" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="rBe-2P-3ba"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Books are selected by default." textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSj-5x-BF2">
+                                        <rect key="frame" x="16" y="615" width="343" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="dib-KL-GSF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ9-Wg-lrf">
+                                        <rect key="frame" x="16" y="166" width="343" height="53"/>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
+                                        <state key="normal" title="Books">
+                                            <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bookSelectButton:" destination="WYw-iY-Kc5" eventType="touchUpInside" id="UYz-xf-0iP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTf-8f-KgL">
+                                        <rect key="frame" x="16" y="249" width="343" height="53"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
+                                        <state key="normal" title="Movies">
+                                            <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="movieSelectButton:" destination="WYw-iY-Kc5" eventType="touchUpInside" id="oCa-Yf-hcu"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="** Media selected is marked in orange color." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHq-xc-ClD">
+                                        <rect key="frame" x="16" y="645" width="343" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="crl-Ja-et8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="iTf-8f-KgL" secondAttribute="trailing" constant="16" id="0kn-lF-nfA"/>
+                                    <constraint firstAttribute="trailing" secondItem="vQ9-Wg-lrf" secondAttribute="trailing" constant="16" id="1a2-F9-ZMr"/>
+                                    <constraint firstItem="5aH-N8-OET" firstAttribute="top" secondItem="UN3-gF-wdv" secondAttribute="top" id="4kW-Tj-JB8"/>
+                                    <constraint firstItem="iTf-8f-KgL" firstAttribute="leading" secondItem="UN3-gF-wdv" secondAttribute="leading" constant="16" id="AJE-Tt-3YK"/>
+                                    <constraint firstItem="vQ9-Wg-lrf" firstAttribute="top" secondItem="6xa-AE-Ndp" secondAttribute="bottom" constant="30" id="IMz-nO-WJv"/>
+                                    <constraint firstItem="vQ9-Wg-lrf" firstAttribute="leading" secondItem="UN3-gF-wdv" secondAttribute="leading" constant="16" id="KW0-xo-ow2"/>
+                                    <constraint firstItem="iTf-8f-KgL" firstAttribute="centerX" secondItem="UN3-gF-wdv" secondAttribute="centerX" id="N0u-9i-2zT"/>
+                                    <constraint firstAttribute="bottom" secondItem="GHq-xc-ClD" secondAttribute="bottom" constant="20" id="OgW-kq-eTA"/>
+                                    <constraint firstAttribute="trailing" secondItem="5aH-N8-OET" secondAttribute="trailing" constant="16" id="Rbj-t1-6pr"/>
+                                    <constraint firstItem="GHq-xc-ClD" firstAttribute="top" secondItem="bSj-5x-BF2" secondAttribute="bottom" constant="10" id="Wfn-gY-QSv"/>
+                                    <constraint firstItem="vQ9-Wg-lrf" firstAttribute="centerX" secondItem="UN3-gF-wdv" secondAttribute="centerX" id="Zz1-9g-q6g"/>
+                                    <constraint firstItem="5aH-N8-OET" firstAttribute="leading" secondItem="UN3-gF-wdv" secondAttribute="leading" constant="16" id="aK6-M9-ahZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="bSj-5x-BF2" secondAttribute="trailing" constant="16" id="box-NJ-Nmr"/>
+                                    <constraint firstAttribute="trailing" secondItem="GHq-xc-ClD" secondAttribute="trailing" constant="16" id="cnz-Zy-Lg8"/>
+                                    <constraint firstItem="GHq-xc-ClD" firstAttribute="leading" secondItem="UN3-gF-wdv" secondAttribute="leading" constant="16" id="cpD-Hz-ebx"/>
+                                    <constraint firstItem="6xa-AE-Ndp" firstAttribute="top" secondItem="5aH-N8-OET" secondAttribute="bottom" constant="16" id="e1b-KE-Igt"/>
+                                    <constraint firstAttribute="trailing" secondItem="6xa-AE-Ndp" secondAttribute="trailing" constant="16" id="hxs-BB-D1h"/>
+                                    <constraint firstItem="iTf-8f-KgL" firstAttribute="top" secondItem="vQ9-Wg-lrf" secondAttribute="bottom" constant="30" id="kao-u1-jtd"/>
+                                    <constraint firstItem="6xa-AE-Ndp" firstAttribute="leading" secondItem="UN3-gF-wdv" secondAttribute="leading" constant="16" id="rRh-gh-DcO"/>
+                                    <constraint firstItem="bSj-5x-BF2" firstAttribute="leading" secondItem="UN3-gF-wdv" secondAttribute="leading" constant="16" id="tFZ-zx-IVP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Nn1-gM-Wbi" firstAttribute="bottom" secondItem="UN3-gF-wdv" secondAttribute="bottom" id="X5h-QD-IEh"/>
+                            <constraint firstItem="UN3-gF-wdv" firstAttribute="top" secondItem="Nn1-gM-Wbi" secondAttribute="top" id="b10-Cp-vLn"/>
+                            <constraint firstItem="Nn1-gM-Wbi" firstAttribute="trailing" secondItem="UN3-gF-wdv" secondAttribute="trailing" id="j76-Ce-CFV"/>
+                            <constraint firstItem="UN3-gF-wdv" firstAttribute="leading" secondItem="Nn1-gM-Wbi" secondAttribute="leading" id="k8r-oR-dkX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Nn1-gM-Wbi"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="amt-JV-6rn"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bookButton" destination="vQ9-Wg-lrf" id="ehE-KZ-wLz"/>
+                        <outlet property="movieButton" destination="iTf-8f-KgL" id="kq4-Dr-vYL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rGM-ks-fzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45.600000000000001" y="-502.46305418719214"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -337,6 +452,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="2j5-pn-kUt"/>
                         <segue destination="C6O-1v-K9p" kind="relationship" relationship="viewControllers" id="1T9-o7-9wv"/>
                         <segue destination="O01-44-M99" kind="relationship" relationship="viewControllers" id="46V-0d-MCb"/>
+                        <segue destination="WYw-iY-Kc5" kind="relationship" relationship="viewControllers" id="3d6-s6-qEb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eb5-hI-elB" userLabel="First Responder" sceneMemberID="firstResponder"/>

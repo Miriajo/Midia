@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // Buscarlo en favoritos primero, antes de buscarlo en internet
-        if let favorite = StorageManager.shared.getFavorite(byId: mediaItemId) {
+        if let favorite = MediaRepository.shared.storageManager.favorites?.getFavorite(byId: mediaItemId) {
             detailedMediaItem = favorite
             syncViewWithModel()
             loadingView.isHidden = true
@@ -135,10 +135,10 @@ class DetailViewController: UIViewController {
         
         isFavorite.toggle() // cambia el valor al contrario
         if isFavorite {
-            StorageManager.shared.add(favorite: favorite)
+            MediaRepository.shared.storageManager.favorites?.add(favorite: favorite)
             toggleFavoriteButton.setTitle("Remove favorite", for: .normal)
         } else {
-            StorageManager.shared.remove(favoriteWithId: favorite.mediaItemId)
+            MediaRepository.shared.storageManager.favorites?.remove(favoriteWithId: favorite.mediaItemId)
             toggleFavoriteButton.setTitle("Add favorite", for: .normal)
         }
     }

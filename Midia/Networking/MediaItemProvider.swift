@@ -12,7 +12,7 @@ import Foundation
 
 class MediaItemProvider {    
 
-    let mediaItemKind: MediaItemKind   // tipo
+    var mediaItemKind: MediaItemKind   // tipo
     let apiConsumer: MediaItemAPIConsumable  // servicio (protocolo) - Tendrá un consumer de la API que seam GoogleBooks, Games, iTunesMovies
     
     

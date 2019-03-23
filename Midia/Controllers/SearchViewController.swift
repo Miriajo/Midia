@@ -50,21 +50,21 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UICollectionViewDelegate {
 
-    // TODO: Cuando seleccione el usuario una celda, nos vamos al detalle del media item
+    // When user selects a cell, we show the detail of media item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        // creamos el Detail VC (desde un storyboard)
+        // create the Detail VC (from a storyboard)
         guard let detailViewController = UIStoryboard(name: "NewDetail", bundle: nil).instantiateInitialViewController() as? DetailViewController else {
             fatalError()
         }
         
-        // pasamos la info (id, mediaprovider)
+        // pass the info (id, mediaprovider)
         let mediaItem = mediaItems[indexPath.item]
         detailViewController.mediaItemId = mediaItem.mediaItemId
         detailViewController.mediaItemProvider = mediaItemProvider
         
         
-        // mostramos (modalmente)
+        // show (modal)
         present(detailViewController, animated: true, completion: nil)
         
     }
@@ -92,7 +92,7 @@ extension SearchViewController: UICollectionViewDataSource {
 extension SearchViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // TODO: hacer la búsqueda, pintar los resultados
+        // Make the search, show results
         
         guard let queryParams = searchBar.text, !queryParams.isEmpty else {
             return

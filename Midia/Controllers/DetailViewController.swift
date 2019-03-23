@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     
     var mediaItemId: String!
-    var mediaItemProvider: MediaItemProvider! // debería ser opcional
+    var mediaItemProvider: MediaItemProvider! // this should be optional
     var detailedMediaItem: MediaItemDetailedProvidable?
     
     var isFavorite: Bool = false
@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
        
         super.viewDidAppear(animated)
         
-        // Buscarlo en favoritos primero, antes de buscarlo en internet
+        // Search in favorites first, before to search in the internet
         if let favorite = MediaRepository.shared.storageManager.favorites?.getFavorite(byId: mediaItemId) {
             detailedMediaItem = favorite
             syncViewWithModel()
@@ -54,18 +54,18 @@ class DetailViewController: UIViewController {
             
         } else {
             
-            // pedirle al media provider el detalle del media item con el id recibido
+            // Ask to the Media Provider the media Item detail with the id recieved
             mediaItemProvider.getMediaItem(byId: mediaItemId, success: { [weak self] (detailedMediaItem) in
                 self?.loadingView.isHidden = true
                 
-                // sincronizo la vista con el modelo
+                // sync model with view
                 self?.detailedMediaItem = detailedMediaItem
                 self?.syncViewWithModel()
                 
             }) { [weak self] (error) in
                 self?.loadingView.isHidden = true
                 
-                // creo una alarma, le añado acción con el handler, presento la alarma
+                // Create an alarm, add action with the handler, present the alarm
                 let alertController = UIAlertController(title: nil, message: "Error recuperando media item.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
                     self?.dismiss(animated: true, completion: nil)
@@ -81,13 +81,13 @@ class DetailViewController: UIViewController {
             return
         }
         
-        // Obligatorio
+        // Madatory
         titleLabel.text = mediaItem.title
         
-        // Me vale que sea nil
+        // It could be nil
         descriptionTextView.text = mediaItem.description
         
-        // Stack view, si lo tenemos lo pintamos, si no ocultamos el elemento para que la stack view reorganice
+        // Stack view, if we have values, we print it, otherwise we hide the element to let the stack view reorganize itself
         if let url = mediaItem.imageURL {
             imageView.loadImage(fromURL: url)
         }
@@ -133,7 +133,7 @@ class DetailViewController: UIViewController {
             return
         }
         
-        isFavorite.toggle() // cambia el valor al contrario
+        isFavorite.toggle() // switch values
         if isFavorite {
             MediaRepository.shared.storageManager.favorites?.add(favorite: favorite)
             toggleFavoriteButton.setTitle("Remove favorite", for: .normal)

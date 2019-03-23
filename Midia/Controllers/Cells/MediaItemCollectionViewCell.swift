@@ -14,14 +14,14 @@ class MediaItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
      
-    // Tengo una propiedad que es mi modelo
+    // We have a property - my model
     var mediaItem: MediaItemProvidable! {
         didSet {
-            // hacer lo que quiera cuando cambie el atributo
-            // con willSet hago lo que quiera ANTES de que cambie el valor del atributo
+            // make whatever it wants when attribute changes
+            // with willSet I do whatever I want BEFORE attribute value changes
             titleLabel.text = mediaItem.title
             if let url = mediaItem.imageURL {
-                //imageView.loadImage(fromURL: url)
+               
                 imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
             }
         }

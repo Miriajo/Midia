@@ -10,14 +10,14 @@ import Foundation
 
 extension DateFormatter {
     
-    // Constante estática de clase - Propiedad computada
+    // Static constant of class - Computed property
     static let shortAPIDateFormatter: DateFormatter = {
-        // Le asignamos un closure que devuelve un formato
+        // Assing a closure returning a format
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
-    }() // los paréntesis del final es para que se ejecute
-
+    }() // parenthesis at the end are to execute
+    
     static let longAPIDateFormatter: DateFormatter = {
        
         let formatter = DateFormatter()

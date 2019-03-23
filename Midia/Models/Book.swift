@@ -74,14 +74,10 @@ extension Book: Codable {
         description = try volumeInfoContainer.decodeIfPresent(String.self, forKey: .description)
         
         // Convertir un String en URL
-        //do {
-            // si ponemos el try? indicamos que es opcional y no hace falta el do-catch
+             // si ponemos el try? indicamos que es opcional y no hace falta el do-catch
             let imageLinkContainer = try? volumeInfoContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .imageLinks)
             coverURL = try imageLinkContainer?.decodeIfPresent(URL.self, forKey: .coverURL)
-//        } catch {
-//            coverURL = nil
-//        }
-        
+       
         rating = try volumeInfoContainer.decodeIfPresent(Float.self, forKey: .rating)
         numberOfReviews = try volumeInfoContainer.decodeIfPresent(Int.self, forKey: .numberOfReviews)
         

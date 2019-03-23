@@ -12,7 +12,7 @@ extension UIImageView {
     
     func loadImage(fromURL url: URL) {
         
-        // no devuelve nada porque tiene que ejecutarse en background
+        // it doesn't return anything because it has to be executed in background mode
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {

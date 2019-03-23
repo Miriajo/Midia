@@ -27,7 +27,7 @@ class SelectMediaViewController: UIViewController {
     
         if bookButton.backgroundColor != UIColor.orange {
             
-            // Cambiar el color de fondo y cargar Books como Media
+            // Change background colour and load Books as Media
             let greyBGColor = bookButton.backgroundColor!
             bookButton.backgroundColor = UIColor.orange
             movieButton.backgroundColor = greyBGColor
@@ -42,7 +42,7 @@ class SelectMediaViewController: UIViewController {
     
         if movieButton.backgroundColor != UIColor.orange {
             
-            // Cambiar el color de fondo y cargar Books como Media
+            // Change background colour and load Movies as Media
             let greyBGColor = movieButton.backgroundColor!
             movieButton.backgroundColor = UIColor.orange
             bookButton.backgroundColor = greyBGColor

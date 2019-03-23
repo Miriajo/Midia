@@ -84,7 +84,6 @@ extension Movie: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
-        //let id = movieId
         try container.encode(movieId, forKey: .movieId)
         
         try container.encode(title, forKey: .title)

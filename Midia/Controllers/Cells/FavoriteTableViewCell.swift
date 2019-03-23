@@ -29,7 +29,7 @@ class FavoriteTableViewCell: UITableViewCell {
             
             titleLabel.text = mediaItem.title
 
-            // OPCIONALES - queremos ocultarlos cuando estén vacíos
+            // OPCIONALS - we want to hide them when the value is nil
             if let creators = mediaItem.creatorName {
                 creatorsLabel.text = creators
             } else {

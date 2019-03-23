@@ -19,7 +19,7 @@ class FavoritesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // coger los favoritos desde el storage
+        // Take favorites from the storage
 
         if let storeFavorites = MediaRepository.shared.storageManager.favorites?.getFavorites() {
             favorites = storeFavorites
@@ -33,16 +33,16 @@ extension FavoritesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   
-        // creamos el Detail VC (desde un storyboard)
+        // Create the Detail VC (from a storyboard)
         guard let detailViewController = UIStoryboard(name: "NewDetail", bundle: nil).instantiateInitialViewController() as? DetailViewController else {
             fatalError()
         }
         
-        // pasamos la info (id, mediaprovider)
+        // pass the info (id, mediaprovider)
         let mediaItem = favorites[indexPath.row]
         detailViewController.mediaItemId = mediaItem.mediaItemId
         
-        // mostramos (modalmente)
+        // show (modal)
         present(detailViewController, animated: true, completion: nil)
         
     }

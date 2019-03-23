@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     
     var mediaItemProvider: MediaItemProvider! 
     
-    private var mediaItems: [MediaItemProvidable]! = [] // aquí nunca poner nada de Book, ni Movies ni nada, esto debe completarse fuera de aquí
+    private var mediaItems: [MediaItemProvidable]! = [] // Never write any Book or other, it should be completed outside
     
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -32,12 +32,12 @@ class HomeViewController: UIViewController {
         willSet {
             guard state != newValue else { return }
             
-            // Ocultamos todas las vistas relacionadas con los estados y después mostramos las que corresponden
+            // Hide all views related with status and later show which are needed
             [homeCollectionView, activityIndicatorView, failureEmojiLabel, statusLabel].forEach { (view) in
                 view?.isHidden = true
             }
             
-            // cuando ha cambiado, podemos actualizar la vista en función del estado en el que nos encontremos
+            // When it have changed, we can update the view taking into account the status
             switch newValue {
             case .loading:
                 activityIndicatorView.isHidden = false
@@ -77,23 +77,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //activityIndicatorView.isHidden = false
         state = .loading
         
         mediaItemProvider.getHomeMediaItems(onSuccess: { [weak self] (mediaItems) in
             self?.mediaItems = mediaItems
-//            self?.homeCollectionView.reloadData()
-//            self?.activityIndicatorView.isHidden = true
             self?.state = mediaItems.count > 0 ? .ready : .noResults
-                // la frase de arriba es lo mismo que el if-else de abajo
-//            if mediaItems.count > 0 {
-//                self?.state = .ready
-//            } else {
-//                self?.state = .noResults
-//            }
         }) { [weak self] (error) in
-//            self?.activityIndicatorView.isHidden = true
-//            self?.failureEmojiLabel.isHidden = false
             self?.state = .failure
         }
     }
@@ -104,18 +93,18 @@ extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        // creamos el Detail VC (desde un storyboard)
+        // create the Detail VC (from a storyboard)
         guard let detailViewController = UIStoryboard(name: "NewDetail", bundle: nil).instantiateInitialViewController() as? DetailViewController else {
             fatalError()
         }
         
-        // pasamos la info (id, mediaprovider)
+        // pass the info (id, mediaprovider)
         let mediaItem = mediaItems[indexPath.item]
         detailViewController.mediaItemId = mediaItem.mediaItemId
         detailViewController.mediaItemProvider = mediaItemProvider
         
         
-        // mostramos (modalmente)
+        // show (modal)
         present(detailViewController, animated: true, completion: nil)
         
     }
@@ -136,7 +125,6 @@ extension HomeViewController: UICollectionViewDataSource {
   
         let mediaItem = mediaItems[indexPath.item]
         
-//        cell.titleLabel.text = mediaItem.title
         cell.mediaItem = mediaItem
         
         return cell
